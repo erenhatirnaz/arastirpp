@@ -1,0 +1,22 @@
+{
+  "name": "arastirpp",
+  "version": "0.0.2",
+  "description": "eksi sozluk arastir linkleri geri geldi!",
+  "author": "fellay  (https://github.com/fellay)",
+  "contributors": [
+    "Eren Hatirnaz <erenhatirnaz@hotmail.com.tr> (https://github.com/ErenHatirnaz)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fellay/arastirpp.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "del": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-coffee": "^2.3.1",
+    "gulp-header": "^1.7.1",
+    "gulp-replace": "^0.5.4",
+    "yargs": "^3.31.0"
+  }
+}

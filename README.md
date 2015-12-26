@@ -3,9 +3,10 @@ ekşi sözlük araştır linkleri geri geldi! ekşi sözlük başlığı: https:
 
 # özellikler
 * istediğiniz siteleri ekleyip çıkartabilirsiniz. kontrol sizde!
+* siteleri istediğiniz gibi sıralayabilirsiniz.
 
 # kurulum
-her şeyden önce chrome kullanıyorsanız tampermonkey eklentisini, firefox kullanıyorsanız greasemonkey eklentisi kurun. daha sonra:
+her şeyden önce chrome kullanıyorsanız [tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) eklentisini, firefox kullanıyorsanız [greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) eklentisi kurun. daha sonra:
 
 ## programlama bilgisi olmayanlar ya da build ile uğraşmak istemeyenler için;
 <!-- TODO: linkler master ile birleştirilince eklenecek -->
@@ -32,11 +33,11 @@ ya da
 ```bash
 $ gulp build:firefox
 ```
-komutları ile sadece kullandığınız tarayıcı için build oluşturabilirsiniz. daha sonra araştır butonunuzu servis etmek için tampermonkey/greasemonkey eklentisine hazırlamış olduğunuz buildi eklemeniz yeterli olacaktır. işte bu kadar artık araştır butonunuz emrinize amade.
+komutları ile sadece kullandığınız tarayıcı için build oluşturabilirsiniz. oluşturduğunuz build `dist` klasörü içerisinde yer alacaktır. daha sonra araştır butonunuzu servis etmek için tampermonkey/greasemonkey eklentisine hazırlamış olduğunuz buildi eklemeniz yeterli olacaktır. işte bu kadar artık araştır butonunuz emrinize amade.
 
 # ekran görüntüleri
-![araştır menüsü ayarlar](http://i.imgur.com/HyTbNw5.png)
-![araştır menüsü](http://i.imgur.com/ufRkJpT.png)
+![araştır menüsü ayarlar](http://i.hizliresim.com/orzWW7.png)
+![araştır menüsü](http://i.hizliresim.com/QZg35v.png)
 
 # katkı sağlamak için
 bu depoyu forkladıktan sonra
@@ -47,6 +48,6 @@ $ npm install
 ```
 komutlarını çalıştırıp geliştirme ortamınızı hazır etmiş olursunuz. daha sonra pull request göndermeden önce `package.json` dosyasındaki `contributors` kısmına şu şekilde:
 ```json
-"Adınız Soyadınız <e-posta adresiniz> (githup profil linkiniz ya da web siteniz)",
+,"Adınız Soyadınız <e-posta adresiniz> (githup profil linkiniz ya da web siteniz)"
 ```
 bir ekleme yaparsanız gönlümüzde yer edinip unutulmazsınız.

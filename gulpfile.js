@@ -22,9 +22,12 @@ var generateBanner = function(browser){
   var type = (browser == "chrome") ? "match" : "include";
   banner.push('// @'+type+'       https://eksisozluk.com/*');
   banner.push('// @'+type+'       https://*.eksisozluk.com/*');
-  banner.push('// @version <%= pkg.version %>');
+  banner.push('// @iconURL     http://i.hizliresim.com/E5QJYv.png');
+  banner.push('// @version     <%= pkg.version %>');
+  banner.push('// @homepage    https://github.com/fellay/arastirpp');
+  banner.push('// @supportURL  https://github.com/fellay/arastirpp/issues/new');
   if(browser == "firefox") {
-    banner.push('// @grant       none');
+    banner.push('// @grant     none');
   }
   banner.push('// ==/UserScript==\n');
 

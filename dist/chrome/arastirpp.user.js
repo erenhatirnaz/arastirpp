@@ -7,7 +7,7 @@
 // @match       https://eksisozluk.com/*
 // @match       https://*.eksisozluk.com/*
 // @iconURL     http://i.hizliresim.com/E5QJYv.png
-// @version     0.0.3
+// @version     0.0.4
 // @homepage    https://github.com/fellay/arastirpp
 // @supportURL  https://github.com/fellay/arastirpp/issues/new
 // ==/UserScript==
@@ -17,15 +17,18 @@
   localstoragename = "arastirppdata";
 
   unsafeWindow.arastirConfig = function() {
+    if (getStoredSites() === null) {
+      firstTime();
+    }
     $('li.active').removeClass('active');
     $('#settings-tabs>li:last').addClass('active');
     $('#settings-tabs').after("<div id='arastirppdiv'>\n  <fieldset>\n    <legend>araştır++ sitelerim</legend>\n  </fieldset>\n</div>");
     $('#arastirppdiv').nextAll().remove();
     $.each(getStoredSites(), function(key, value) {
-      return $('#arastirppdiv>fieldset').append("<div data-arastirpp=\"" + key + "\">\n  <a class=\"icon icon-up-open like\" style=\"color: #666\" title=\"yukarı\"><span></span></a>\n  <label style=\"width\" class=\"siteFormNo\"> " + (key + 1) + " </label>\n  <a class=\"icon icon-down-open dislike\" style=\"color: #666\" title=\"aşağı\"><span></span></a>\n  <input style=\"width:80px;\" type=\"text\" value=\"" + value.siteName + "\"/>\n  <input style=\"width:220px;\" type=\"text\" value=\"" + value.url + "\"/>\n  <input style=\"width:220px;\" type=\"text\" value=\"" + value.icon + "\" placeholder=\"icon url\" />\n  <span class=\"delSite\"><a href=\"#arastir\" onclick=\"delSite('" + key + "');\">temizle</a></span>\n</div>");
+      return $('#arastirppdiv>fieldset').append("<div data-arastirpp=\"" + key + "\">\n  <a class=\"icon icon-up-open like\" style=\"color: #666\" title=\"yukarı\"><span></span></a>\n  <label style=\"width\" class=\"siteFormNo\"> " + (key + 1) + " </label>\n  <a class=\"icon icon-down-open dislike\" style=\"color: #666\" title=\"aşağı\"><span></span></a>\n  <input style=\"width:80px;\" type=\"text\" value=\"" + value.siteName + "\"/>\n  <input style=\"width:220px;\" type=\"text\" value=\"" + value.url + "\"/>\n  <input style=\"width:220px;\" type=\"text\" value=\"" + value.icon + "\" placeholder=\"icon url\" />\n  <span class=\"delSite\"><a href=\"#arastir\" onclick=\"delSite('" + key + "');\">kaldır</a></span>\n</div>");
     });
     addNewSiteForm();
-    $('#arastirppdiv>fieldset').after("<button class='primary' onclick='gogogo();'>kaydet!</button>");
+    $('#arastirppdiv>fieldset').after("<button class='primary' onclick='gogogo();'>kaydet!</button>\n<hr style=\"-ms-transform: rotate(90deg);-webkit-transform: rotate(90deg);transform: rotate(90deg);width:25px; display:inline; margin-right:3px\" />\n<input type=\"file\" id=\"arastirppfile\" style=\"display:none\" />\n<button class='info' onclick='exportSites();'>dışa aktar</button>\n<button class='info' onclick=\"document.getElementById('arastirppfile').click()\">içeri aktar</button>");
     $('.like').click(function() {
       var $current, $prev;
       if ($(this).attr('disabled') === "disabled") {
@@ -41,7 +44,7 @@
         return $prev.attr('data-arastirpp', parseInt($prev.attr('data-arastirpp')) + 1);
       }
     });
-    return $('.dislike').click(function() {
+    $('.dislike').click(function() {
       var $current, $next;
       if ($(this).attr('disabled') === "disabled") {
         return;
@@ -56,10 +59,49 @@
         return $next.attr('data-arastirpp', parseInt($next.attr('data-arastirpp')) - 1);
       }
     });
+    return $("#arastirppfile").on('change', function(e) {
+      var file, reader;
+      file = e.target.files[0];
+      if (!file) {
+        return;
+      }
+      reader = new FileReader();
+      reader.onload = function(e) {
+        var error, sites;
+        try {
+          sites = JSON.parse(e.target.result);
+          if (checkSitesValidity(sites)) {
+            if (confirm("emin misin bak bu işin geri dönüşü yok?")) {
+              localStorage.setItem(localstoragename, e.target.result);
+              alert("senin iş tamam");
+              return arastirConfig();
+            }
+          } else {
+            throw Exception();
+          }
+        } catch (error) {
+          return alert("verdiğin dosya formatlara uymuyor!");
+        }
+      };
+      return reader.readAsText(file);
+    });
   };
 
   unsafeWindow.delSite = function(key) {
     return $('#arastirppdiv>fieldset>div:eq(' + key + ')').remove();
+  };
+
+  unsafeWindow.checkSitesValidity = function(sites) {
+    var i, len, result, site;
+    result = true;
+    for (i = 0, len = sites.length; i < len; i++) {
+      site = sites[i];
+      if (Object.keys(site).toString() !== 'siteName,url,icon') {
+        result = false;
+        break;
+      }
+    }
+    return result;
   };
 
   unsafeWindow.gogogo = function() {
@@ -88,6 +130,17 @@
         });
       }
     }), 3500);
+  };
+
+  unsafeWindow.exportSites = function() {
+    var element;
+    element = document.createElement('a');
+    element.setAttribute('href', "data:application/json;charset=utf-8," + (localStorage.getItem(localstoragename)));
+    element.setAttribute('download', 'arastir++ sitelerim.json');
+    element.style.display = "none";
+    document.body.appendChild(element);
+    element.click();
+    return document.body.removeChild(element);
   };
 
   unsafeWindow.addNewSiteForm = function() {

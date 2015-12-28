@@ -1,6 +1,9 @@
-localstoragename = "arastirppdata";
+localstoragename = "arastirppdata"
 
 unsafeWindow.arastirConfig = ->
+  if getStoredSites() == null
+    firstTime()
+
   $('li.active').removeClass 'active'
   $('#settings-tabs>li:last').addClass 'active'
   $('#settings-tabs').after """
@@ -21,16 +24,21 @@ unsafeWindow.arastirConfig = ->
       <input style="width:80px;" type="text" value="#{value.siteName}"/>
       <input style="width:220px;" type="text" value="#{value.url}"/>
       <input style="width:220px;" type="text" value="#{value.icon}" placeholder="icon url" />
-      <span class="delSite"><a href="#arastir" onclick="delSite('#{key}');">temizle</a></span>
+      <span class="delSite"><a href="#arastir" onclick="delSite('#{key}');">kaldır</a></span>
     </div>
     """
 
-  addNewSiteForm();
-  $('#arastirppdiv>fieldset').after "<button class='primary' onclick='gogogo();'>kaydet!</button>"
+  addNewSiteForm()
+  $('#arastirppdiv>fieldset').after """
+  <button class='primary' onclick='gogogo();'>kaydet!</button>
+  <hr style="-ms-transform: rotate(90deg);-webkit-transform: rotate(90deg);transform: rotate(90deg);width:25px; display:inline; margin-right:3px" />
+  <input type="file" id="arastirppfile" style="display:none" />
+  <button class='info' onclick='exportSites();'>dışa aktar</button>
+  <button class='info' onclick="document.getElementById('arastirppfile').click()">içeri aktar</button>
+  """
 
   $('.like').click ->
-    if $(this).attr('disabled') == "disabled"
-      return;
+    if $(this).attr('disabled') == "disabled" then return
     if parseInt($(this).parent().attr('data-arastirpp')) == 0
       alert 'zaten en üstte ki!'
     else
@@ -41,8 +49,7 @@ unsafeWindow.arastirConfig = ->
       $prev.attr 'data-arastirpp', parseInt($prev.attr('data-arastirpp'))+1
 
   $('.dislike').click ->
-    if $(this).attr('disabled') == "disabled"
-      return;
+    if $(this).attr('disabled') == "disabled" then return
     if parseInt($(this).parent().attr('data-arastirpp')) == getStoredSites().length-1
       alert 'zaten en altta ki!'
     else
@@ -52,8 +59,34 @@ unsafeWindow.arastirConfig = ->
       $current.attr 'data-arastirpp', parseInt($current.attr('data-arastirpp'))+1
       $next.attr 'data-arastirpp', parseInt($next.attr('data-arastirpp'))-1
 
+  $("#arastirppfile").on 'change', (e) ->
+    file = e.target.files[0]
+    if !file then return
+    reader = new FileReader()
+    reader.onload = (e) ->
+      try
+        sites = JSON.parse e.target.result
+        if checkSitesValidity(sites)
+          if confirm("emin misin bak bu işin geri dönüşü yok?")
+            localStorage.setItem localstoragename, e.target.result
+            alert "senin iş tamam"
+            arastirConfig()
+        else
+          throw Exception()
+      catch
+        alert "verdiğin dosya formatlara uymuyor!"
+    reader.readAsText file
+
 unsafeWindow.delSite = (key) ->
   $('#arastirppdiv>fieldset>div:eq(' + key + ')').remove()
+
+unsafeWindow.checkSitesValidity = (sites) ->
+  result = true
+  for site in sites
+    if Object.keys(site).toString() != 'siteName,url,icon'
+      result = false
+      break
+  result
 
 unsafeWindow.gogogo = ->
   thisIsWhatToSave = []
@@ -73,8 +106,18 @@ unsafeWindow.gogogo = ->
   """
   setTimeout (->
     if $('#itsdone').length
-      $('#itsdone').fadeOut(500, -> $(this).remove() );
+      $('#itsdone').fadeOut(500, -> $(this).remove() )
   ), 3500
+
+unsafeWindow.exportSites = ->
+  element = document.createElement 'a'
+  element.setAttribute 'href', "data:application/json;charset=utf-8,#{localStorage.getItem(localstoragename)}"
+  element.setAttribute 'download', 'arastir++ sitelerim.json'
+  element.style.display = "none"
+
+  document.body.appendChild element
+  element.click()
+  document.body.removeChild element
 
 unsafeWindow.addNewSiteForm = ->
   s = parseInt($('.siteFormNo:last').text())+1
@@ -133,7 +176,7 @@ unsafeWindow.firstTime = ->
     localStorage.setItem localstoragename, JSON.stringify(getDefaultArastirSites())
 
 unsafeWindow.togglearastirpplist = ->
-  $('#arastirpplist').toggle();
+  $('#arastirpplist').toggle()
 
 $(document).ready ->
   if $('#settings-tabs').length
@@ -151,7 +194,7 @@ $(document).ready ->
 
     $.each getStoredSites(), (key, value) ->
       baslik = $('h1#title span[itemprop="name"]').text()
-      itemStyle = "";
+      itemStyle = ""
       if value.icon.length
         itemStyle = """
         background: url('#{value.icon}') no-repeat scroll left top rgba(0, 0, 0, 0);

@@ -27,7 +27,7 @@ var generateBanner = function(browser){
   banner.push('// @homepage    https://github.com/fellay/arastirpp');
   banner.push('// @supportURL  https://github.com/fellay/arastirpp/issues/new');
   if(browser == "firefox") {
-    banner.push('// @grant     none');
+    banner.push('// @grant       none');
   }
   banner.push('// ==/UserScript==\n');
 

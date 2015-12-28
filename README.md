@@ -4,6 +4,7 @@ ekşi sözlük araştır linkleri geri geldi! ekşi sözlük başlığı: https:
 # özellikler
 * istediğiniz siteleri ekleyip çıkartabilirsiniz. kontrol sizde!
 * siteleri istediğiniz gibi sıralayabilirsiniz.
+* siteleri dışarı(yedekleyebilirsiniz) ya da içeri(yedekten geri yükleyebilirsiniz) aktarabilirsiniz.
 
 # kurulum
 her şeyden önce chrome kullanıyorsanız [tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) eklentisini, firefox kullanıyorsanız [greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) eklentisi kurun. daha sonra:
@@ -36,7 +37,7 @@ $ gulp build:firefox
 komutları ile sadece kullandığınız tarayıcı için build oluşturabilirsiniz. oluşturduğunuz build `dist` klasörü içerisinde yer alacaktır. daha sonra araştır butonunuzu servis etmek için tampermonkey/greasemonkey eklentisine hazırlamış olduğunuz buildi eklemeniz yeterli olacaktır. işte bu kadar artık araştır butonunuz emrinize amade.
 
 # ekran görüntüleri
-![araştır menüsü ayarlar](http://i.hizliresim.com/orzWW7.png)
+![araştır menüsü ayarları](http://i.hizliresim.com/jV4yon.png)
 ![araştır menüsü](http://i.hizliresim.com/QZg35v.png)
 
 # katkı sağlamak için

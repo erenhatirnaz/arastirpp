@@ -89,7 +89,7 @@
   };
 
   window.delSite = function(key) {
-    return $('#arastirppdiv>fieldset>div:eq(' + key + ')').remove();
+    return $('#arastirppdiv>fieldset>div[data-arastirpp=' + key + ']').remove();
   };
 
   window.checkSitesValidity = function(sites) {
@@ -147,6 +147,9 @@
   window.addNewSiteForm = function() {
     var s;
     s = parseInt($('.siteFormNo:last').text()) + 1;
+    if (isNaN(s)) {
+      s = 1;
+    }
     $('#arastirppdiv>fieldset').append("<div data-arastirpp=\"" + (s - 1) + "\">\n  <a class=\"icon icon-up-open like\" disabled=\"disabled\" style=\"cursor:not-allowed; color: #bababa\" title=\"yukarı\"><span></span></a>\n  <label class=\"siteFormNo\">" + s + "</label>\n  <a class=\"icon icon-down-open dislike\" disabled=\"disabled\" style=\"cursor:not-allowed; color: #bababa\" title=\"aşağı\"><span></span></a>\n  <input style=\"width:80px;\" type=\"text\" placeholder=\"site adı\" />\n  <input style=\"width:220px;\" type=\"text\" placeholder=\"site url\'i\" />\n  <input style=\"width:220px;\" type=\"text\" placeholder=\"icon url\'i\" />\n</div>");
     $('button#dataSiteEkleButton').remove();
     return $('#arastirppdiv>fieldset>div:last').append('<button id="dahaSiteEkleButton" onclick="addNewSiteForm();">daha</button>');

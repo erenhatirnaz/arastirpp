@@ -78,7 +78,7 @@ unsafeWindow.arastirConfig = ->
     reader.readAsText file
 
 unsafeWindow.delSite = (key) ->
-  $('#arastirppdiv>fieldset>div:eq(' + key + ')').remove()
+  $('#arastirppdiv>fieldset>div[data-arastirpp=' + key + ']').remove()
 
 unsafeWindow.checkSitesValidity = (sites) ->
   result = true
@@ -121,6 +121,7 @@ unsafeWindow.exportSites = ->
 
 unsafeWindow.addNewSiteForm = ->
   s = parseInt($('.siteFormNo:last').text())+1
+  if isNaN(s) then s = 1
   $('#arastirppdiv>fieldset').append """
   <div data-arastirpp="#{s-1}">
     <a class="icon icon-up-open like" disabled="disabled" style="cursor:not-allowed; color: #bababa" title="yukarı"><span></span></a>

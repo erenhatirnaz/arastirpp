@@ -22,6 +22,7 @@ her şeyden önce chrome kullanıyorsanız [tampermonkey](https://chrome.google.
 
 ### hazırlanışı
 ```bash
+$ git clone https://github.com/erenhatirnaz/arastirpp.git
 $ cd arastirpp
 $ npm install
 $ gulp build:all

@@ -17,7 +17,7 @@ unsafeWindow.arastirConfig = ->
 
   $.each getStoredSites(), (key, value) ->
     $('#arastirppdiv>fieldset').append """
-    <div data-arastirpp="#{key}">
+    <div data-arastirpp="#{key}" style="margin-bottom:1px">
       <a class="icon icon-up-open like" style="color: #666" title="yukarı"><span></span></a>
       <label style="width" class="siteFormNo"> #{key+1} </label>
       <a class="icon icon-down-open dislike" style="color: #666" title="aşağı"><span></span></a>
@@ -123,7 +123,7 @@ unsafeWindow.addNewSiteForm = ->
   s = parseInt($('.siteFormNo:last').text())+1
   if isNaN(s) then s = 1
   $('#arastirppdiv>fieldset').append """
-  <div data-arastirpp="#{s-1}">
+  <div data-arastirpp="#{s-1}" style="margin-bottom:1px">
     <a class="icon icon-up-open like" disabled="disabled" style="cursor:not-allowed; color: #bababa" title="yukarı"><span></span></a>
     <label class="siteFormNo">#{s}</label>
     <a class="icon icon-down-open dislike" disabled="disabled" style="cursor:not-allowed; color: #bababa" title="aşağı"><span></span></a>
@@ -132,7 +132,7 @@ unsafeWindow.addNewSiteForm = ->
     <input style="width:220px;" type="text" placeholder="icon url\'i" />
   </div>
   """
-  $('button#dataSiteEkleButton').remove()
+  $('button#dahaSiteEkleButton').remove()
   $('#arastirppdiv>fieldset>div:last').append('<button id="dahaSiteEkleButton" onclick="addNewSiteForm();">daha</button>')
 
 unsafeWindow.getDefaultArastirSites = ->
@@ -181,6 +181,7 @@ unsafeWindow.togglearastirpplist = ->
 
 $(document).ready ->
   if $('#settings-tabs').length
+    $('section[id="content-body"]').css 'width', '630px'
     $('#settings-tabs').append '<li><a href="#arastir" onclick="arastirConfig();">araştır++</a>'
 
   if $('.sub-title-menu').length
@@ -188,7 +189,7 @@ $(document).ready ->
 
     $('#topic-share-menu').after """
     <div id="arastirpptogglediv" class="dropdown">
-      <a id="arastirpptogglelink" onclick="togglearastirpplist();" class="dropdown-toggle">araştır</a>
+      <a id="arastirpptogglelink" onclick="togglearastirpplist();" class="expandable toggles">araştır</a>
       <ul id="arastirpplist" class="dropdown-menu toggles-menu "></ul>
     </div>
     """

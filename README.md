@@ -11,8 +11,8 @@ her şeyden önce chrome kullanıyorsanız [tampermonkey](https://chrome.google.
 
 ## programlama bilgisi olmayanlar ya da build ile uğraşmak istemeyenler için;
 <!-- TODO: linkler master ile birleştirilince eklenecek -->
-[![chrome](http://icons.iconarchive.com/icons/cornmanthe3rd/plex/16/Internet-chrome-icon.png) chrome için buraya tıklayın]() <br/>
-[![firefox](http://icons.iconarchive.com/icons/cornmanthe3rd/plex/16/Internet-firefox-icon.png) firefox için buraya tıklayın]()
+[![chrome](http://icons.iconarchive.com/icons/cornmanthe3rd/plex/16/Internet-chrome-icon.png) chrome için buraya tıklayın](https://github.com/erenhatirnaz/arastirpp/raw/master/dist/chrome/arastirpp.user.js) <br/>
+[![firefox](http://icons.iconarchive.com/icons/cornmanthe3rd/plex/16/Internet-firefox-icon.png) firefox için buraya tıklayın](https://github.com/erenhatirnaz/arastirpp/raw/master/dist/firefox/arastirpp.user.js)
 
 ## "kendi buildimi kendim hazırlarım" diyenler için;
 
@@ -37,8 +37,8 @@ $ gulp build:firefox
 komutları ile sadece kullandığınız tarayıcı için build oluşturabilirsiniz. oluşturduğunuz build `dist` klasörü içerisinde yer alacaktır. daha sonra araştır butonunuzu servis etmek için tampermonkey/greasemonkey eklentisine hazırlamış olduğunuz buildi eklemeniz yeterli olacaktır. işte bu kadar artık araştır butonunuz emrinize amade.
 
 # ekran görüntüleri
-![araştır menüsü ayarları](http://i.hizliresim.com/jV4yon.png)
-![araştır menüsü](http://i.hizliresim.com/QZg35v.png)
+![araştır menüsü ayarları](screenshots/settings.png)
+![araştır menüsü](screenshots/arastirpp.png)
 
 # katkı sağlamak için
 bu depoyu forkladıktan sonra
@@ -49,6 +49,7 @@ $ npm install
 ```
 komutlarını çalıştırıp geliştirme ortamınızı hazır etmiş olursunuz. daha sonra pull request göndermeden önce `package.json` dosyasındaki `contributors` kısmına şu şekilde:
 ```json
-,"Adınız Soyadınız <e-posta adresiniz> (githup profil linkiniz ya da web siteniz)"
+<sizden önceki>,
+"Adınız Soyadınız <e-posta adresiniz> (githup profil linkiniz ya da web siteniz)"
 ```
 bir ekleme yaparsanız gönlümüzde yer edinip unutulmazsınız.

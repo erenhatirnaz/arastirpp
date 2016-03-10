@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 
-var pkg = require('./package.json')
+var pkg = require('./package.json'),
     coffee = require('gulp-coffee'),
     header = require('gulp-header'),
     gulpreplace = require('gulp-replace'),

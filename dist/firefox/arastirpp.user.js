@@ -26,7 +26,7 @@
     $('#settings-tabs').after("<div id='arastirppdiv'>\n  <fieldset>\n    <legend>araştır++ sitelerim</legend>\n  </fieldset>\n</div>");
     $('#arastirppdiv').nextAll().remove();
     $.each(getStoredSites(), function(key, value) {
-      return $('#arastirppdiv>fieldset').append("<div data-arastirpp=\"" + key + "\">\n  <a class=\"icon icon-up-open like\" style=\"color: #666\" title=\"yukarı\"><span></span></a>\n  <label style=\"width\" class=\"siteFormNo\"> " + (key + 1) + " </label>\n  <a class=\"icon icon-down-open dislike\" style=\"color: #666\" title=\"aşağı\"><span></span></a>\n  <input style=\"width:80px;\" type=\"text\" value=\"" + value.siteName + "\"/>\n  <input style=\"width:220px;\" type=\"text\" value=\"" + value.url + "\"/>\n  <input style=\"width:220px;\" type=\"text\" value=\"" + value.icon + "\" placeholder=\"icon url\" />\n  <span class=\"delSite\"><a href=\"#arastir\" onclick=\"delSite('" + key + "');\">kaldır</a></span>\n</div>");
+      return $('#arastirppdiv>fieldset').append("<div data-arastirpp=\"" + key + "\" style=\"margin-bottom:1px\">\n  <a class=\"icon icon-up-open like\" style=\"color: #666\" title=\"yukarı\"><span></span></a>\n  <label style=\"width\" class=\"siteFormNo\"> " + (key + 1) + " </label>\n  <a class=\"icon icon-down-open dislike\" style=\"color: #666\" title=\"aşağı\"><span></span></a>\n  <input style=\"width:80px;\" type=\"text\" value=\"" + value.siteName + "\"/>\n  <input style=\"width:220px;\" type=\"text\" value=\"" + value.url + "\"/>\n  <input style=\"width:220px;\" type=\"text\" value=\"" + value.icon + "\" placeholder=\"icon url\" />\n  <span class=\"delSite\"><a href=\"#arastir\" onclick=\"delSite('" + key + "');\">kaldır</a></span>\n</div>");
     });
     addNewSiteForm();
     $('#arastirppdiv>fieldset').after("<button class='primary' onclick='gogogo();'>kaydet!</button>\n<hr style=\"-ms-transform: rotate(90deg);-webkit-transform: rotate(90deg);transform: rotate(90deg);width:25px; display:inline; margin-right:3px\" />\n<input type=\"file\" id=\"arastirppfile\" style=\"display:none\" />\n<button class='info' onclick='exportSites();'>dışa aktar</button>\n<button class='info' onclick=\"document.getElementById('arastirppfile').click()\">içeri aktar</button>");
@@ -150,8 +150,8 @@
     if (isNaN(s)) {
       s = 1;
     }
-    $('#arastirppdiv>fieldset').append("<div data-arastirpp=\"" + (s - 1) + "\">\n  <a class=\"icon icon-up-open like\" disabled=\"disabled\" style=\"cursor:not-allowed; color: #bababa\" title=\"yukarı\"><span></span></a>\n  <label class=\"siteFormNo\">" + s + "</label>\n  <a class=\"icon icon-down-open dislike\" disabled=\"disabled\" style=\"cursor:not-allowed; color: #bababa\" title=\"aşağı\"><span></span></a>\n  <input style=\"width:80px;\" type=\"text\" placeholder=\"site adı\" />\n  <input style=\"width:220px;\" type=\"text\" placeholder=\"site url\'i\" />\n  <input style=\"width:220px;\" type=\"text\" placeholder=\"icon url\'i\" />\n</div>");
-    $('button#dataSiteEkleButton').remove();
+    $('#arastirppdiv>fieldset').append("<div data-arastirpp=\"" + (s - 1) + "\" style=\"margin-bottom:1px\">\n  <a class=\"icon icon-up-open like\" disabled=\"disabled\" style=\"cursor:not-allowed; color: #bababa\" title=\"yukarı\"><span></span></a>\n  <label class=\"siteFormNo\">" + s + "</label>\n  <a class=\"icon icon-down-open dislike\" disabled=\"disabled\" style=\"cursor:not-allowed; color: #bababa\" title=\"aşağı\"><span></span></a>\n  <input style=\"width:80px;\" type=\"text\" placeholder=\"site adı\" />\n  <input style=\"width:220px;\" type=\"text\" placeholder=\"site url\'i\" />\n  <input style=\"width:220px;\" type=\"text\" placeholder=\"icon url\'i\" />\n</div>");
+    $('button#dahaSiteEkleButton').remove();
     return $('#arastirppdiv>fieldset>div:last').append('<button id="dahaSiteEkleButton" onclick="addNewSiteForm();">daha</button>');
   };
 
@@ -201,11 +201,12 @@
 
   $(document).ready(function() {
     if ($('#settings-tabs').length) {
+      $('section[id="content-body"]').css('width', '630px');
       $('#settings-tabs').append('<li><a href="#arastir" onclick="arastirConfig();">araştır++</a>');
     }
     if ($('.sub-title-menu').length) {
       firstTime();
-      $('#topic-share-menu').after("<div id=\"arastirpptogglediv\" class=\"dropdown\">\n  <a id=\"arastirpptogglelink\" onclick=\"togglearastirpplist();\" class=\"dropdown-toggle\">araştır</a>\n  <ul id=\"arastirpplist\" class=\"dropdown-menu toggles-menu \"></ul>\n</div>");
+      $('#topic-share-menu').after("<div id=\"arastirpptogglediv\" class=\"dropdown\">\n  <a id=\"arastirpptogglelink\" onclick=\"togglearastirpplist();\" class=\"expandable toggles\">araştır</a>\n  <ul id=\"arastirpplist\" class=\"dropdown-menu toggles-menu \"></ul>\n</div>");
       return $.each(getStoredSites(), function(key, value) {
         var baslik, itemStyle;
         baslik = $('h1#title span[itemprop="name"]').text();

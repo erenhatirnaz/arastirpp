@@ -2,7 +2,7 @@
 > ekşi sözlük araştır linkleri geri geldi! <br/>
 > ekşi sözlük başlığı: https://eksisozluk.com/arastir--4441723
 
-**Not:** bu scripti ilk olarak hazırlayan @fellay nick'li github kullanıcısıdır. fakat kendisi scripti uzun süredir güncellemediği için(uzun süredir de github hesabı üzerinde hiçbir aktivite olmadığı için) ve benim de aklıma farklı fikirler geldiği için şuan scriptin geliştirilmesine bu repo üzerinde ben devam ediyorum. bu notu eklemek istedim çünkü scriptin ilk yazarının emeğine saygısızlık etmek olmazdı.
+**Not:** bu scripti ilk olarak hazırlayan [@fellay](https://github.com/fellay) nick'li github kullanıcısıdır. fakat kendisi scripti uzun süredir güncellemediği için(uzun süredir de github hesabı üzerinde hiçbir aktivite olmadığı için) ve benim de aklıma farklı fikirler geldiği için şuan scriptin geliştirilmesine bu repo üzerinde ben devam ediyorum. bu notu eklemek istedim çünkü scriptin ilk yazarının emeğine saygısızlık etmek olmazdı.
 
 # özellikler
 * istediğiniz siteleri ekleyip çıkartabilirsiniz. kontrol sizde!

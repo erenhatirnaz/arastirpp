@@ -24,8 +24,8 @@ var generateBanner = function(browser){
   banner.push('// @'+type+'       https://*.eksisozluk.com/*');
   banner.push('// @iconURL     http://i.hizliresim.com/E5QJYv.png');
   banner.push('// @version     <%= pkg.version %>');
-  banner.push('// @homepage    https://github.com/fellay/arastirpp');
-  banner.push('// @supportURL  https://github.com/fellay/arastirpp/issues/new');
+  banner.push('// @homepage    https://github.com/erenhatirnaz/arastirpp');
+  banner.push('// @supportURL  https://github.com/erenhatirnaz/arastirpp/issues/new');
   if(browser == "firefox") {
     banner.push('// @grant       none');
   }

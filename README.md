@@ -1,5 +1,8 @@
-# araştır++
-ekşi sözlük araştır linkleri geri geldi! ekşi sözlük başlığı: https://eksisozluk.com/arastir--4441723
+# ![arastirpp](icon.png) araştır++
+> ekşi sözlük araştır linkleri geri geldi! <br/>
+> ekşi sözlük başlığı: https://eksisozluk.com/arastir--4441723
+
+**Not:** bu scripti ilk olarak hazırlayan @fellay nick'li github kullanıcısıdır. fakat kendisi scripti uzun süredir güncellemediği için(uzun süredir de github hesabı üzerinde hiçbir aktivite olmadığı için) ve benim de aklıma farklı fikirler geldiği için şuan scriptin geliştirilmesine bu repo üzerinde ben devam ediyorum. bu notu eklemek istedim çünkü scriptin ilk yazarının emeğine saygısızlık etmek olmazdı.
 
 # özellikler
 * istediğiniz siteleri ekleyip çıkartabilirsiniz. kontrol sizde!
@@ -38,8 +41,10 @@ $ gulp build:firefox
 komutları ile sadece kullandığınız tarayıcı için build oluşturabilirsiniz. oluşturduğunuz build `dist` klasörü içerisinde yer alacaktır. daha sonra araştır butonunuzu servis etmek için tampermonkey/greasemonkey eklentisine hazırlamış olduğunuz buildi eklemeniz yeterli olacaktır. işte bu kadar artık araştır butonunuz emrinize amade.
 
 # ekran görüntüleri
-![araştır menüsü ayarları](screenshots/settings.png)
-![araştır menüsü](screenshots/arastirpp.png)
+![araştır menüsü ayarları gündüz](screenshots/lightsettings.png)
+![araştır menüsü gündüz](screenshots/lightarastirpp.png)
+![araştır menüsü ayarları gece](screenshots/darksettings.png)
+![araştır menüsü gece](screenshots/darkarastirpp.png)
 
 # katkı sağlamak için
 bu depoyu forkladıktan sonra

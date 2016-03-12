@@ -1,4 +1,25 @@
 localstoragename = "arastirppdata"
+$("<style>")
+  .prop 'type', 'text/css'
+  .html "
+    .light-theme #arastirppdiv a.like, .light-theme #arastirppdiv a.dislike {
+      color: #666666;
+    }
+    .light-theme #arastirppdiv a.like.disabled, .light-theme #arastirppdiv a.dislike.disabled {
+      color: #bababa;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+    .dark-theme #arastirppdiv a.like, .dark-theme #arastirppdiv a.dislike {
+      color: #bababa;
+    }
+    .dark-theme #arastirppdiv a.like.disabled, .dark-theme #arastirppdiv a.dislike.disabled {
+      color: #666666;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+  "
+  .appendTo "head"
 
 unsafeWindow.arastirConfig = ->
   if getStoredSites() == null
@@ -18,9 +39,9 @@ unsafeWindow.arastirConfig = ->
   $.each getStoredSites(), (key, value) ->
     $('#arastirppdiv>fieldset').append """
     <div data-arastirpp="#{key}" style="margin-bottom:1px">
-      <a class="icon icon-up-open like" style="color: #666" title="yukarı"><span></span></a>
+      <a class="icon icon-up-open like" title="yukarı"><span></span></a>
       <label style="width" class="siteFormNo"> #{key+1} </label>
-      <a class="icon icon-down-open dislike" style="color: #666" title="aşağı"><span></span></a>
+      <a class="icon icon-down-open dislike" title="aşağı"><span></span></a>
       <input style="width:80px;" type="text" value="#{value.siteName}"/>
       <input style="width:220px;" type="text" value="#{value.url}"/>
       <input style="width:220px;" type="text" value="#{value.icon}" placeholder="icon url" />
@@ -101,7 +122,7 @@ unsafeWindow.gogogo = ->
   arastirConfig()
   $('#settings-tabs').after """
   <span id="itsdone" style="background-color: #dff2bf; color: #4f8a10;" class="showall more-data" title="senin is tamam!">
-    arastir linkleri basariyla guncellendi!
+    araştır linkleri başarıyla güncellendi!
   </span>
   """
   setTimeout (->
@@ -124,9 +145,9 @@ unsafeWindow.addNewSiteForm = ->
   if isNaN(s) then s = 1
   $('#arastirppdiv>fieldset').append """
   <div data-arastirpp="#{s-1}" style="margin-bottom:1px">
-    <a class="icon icon-up-open like" disabled="disabled" style="cursor:not-allowed; color: #bababa" title="yukarı"><span></span></a>
+    <a class="icon icon-up-open like disabled" title="yukarı" ><span></span></a>
     <label class="siteFormNo">#{s}</label>
-    <a class="icon icon-down-open dislike" disabled="disabled" style="cursor:not-allowed; color: #bababa" title="aşağı"><span></span></a>
+    <a class="icon icon-down-open dislike disabled" title="aşağı"><span></span></a>
     <input style="width:80px;" type="text" placeholder="site adı" />
     <input style="width:220px;" type="text" placeholder="site url\'i" />
     <input style="width:220px;" type="text" placeholder="icon url\'i" />

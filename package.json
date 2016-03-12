@@ -1,6 +1,6 @@
 {
   "name": "arastirpp",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "eksi sozluk arastir linkleri geri geldi!",
   "author": "fellay  (https://github.com/fellay)",
   "contributors": [
@@ -8,7 +8,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fellay/arastirpp.git"
+    "url": "git+https://github.com/erenhatirnaz/arastirpp.git"
   },
   "license": "MIT",
   "dependencies": {
